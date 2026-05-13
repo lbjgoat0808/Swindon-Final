@@ -177,12 +177,12 @@
     
     /* Hero Section - Hong Kong cityscape vibe with bookstore photo */
     .hero {
-      background: 
-        linear-gradient(135deg, rgba(42, 38, 34, 0.85) 0%, rgba(107, 101, 96, 0.82) 100%),
-        url('Swindon%20bookstore%20pic.jpg') center/cover no-repeat,
-        repeating-linear-gradient(90deg, transparent 0px, transparent 60px, rgba(217, 117, 72, 0.03) 60px, rgba(217, 117, 72, 0.03) 61px),
-        repeating-linear-gradient(0deg, transparent 0px, transparent 100px, rgba(217, 117, 72, 0.02) 100px, rgba(217, 117, 72, 0.02) 101px),
-        linear-gradient(180deg, #1a1614 0%, #2a2622 50%, #3a3632 100%);
+      background-image: 
+        linear-gradient(135deg, rgba(42, 38, 34, 0.75) 0%, rgba(107, 101, 96, 0.72) 100%),
+        url('Swindon bookstore pic.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       padding: 80px 24px;
       position: relative;
       overflow: hidden;
@@ -497,8 +497,8 @@
     
     /* Contact CTA */
     .contact-cta {
-      background: linear-gradient(135deg, rgba(217, 117, 72, 0.1) 0%, rgba(196, 93, 62, 0.1) 100%);
-      border: 2px solid rgba(217, 117, 72, 0.3);
+      background: linear-gradient(135deg, rgba(217, 117, 72, 0.15) 0%, rgba(196, 93, 62, 0.15) 100%);
+      border: 2px solid rgba(217, 117, 72, 0.4);
       border-radius: 12px;
       padding: 20px 28px;
       margin: 32px 0;
@@ -506,7 +506,7 @@
     }
     
     .contact-cta p {
-      color: var(--text);
+      color: #FFFFFF;
       font-size: 1.05rem;
       margin-bottom: 12px;
       font-weight: 500;
@@ -1034,12 +1034,31 @@
       border: 2px solid var(--border);
       transition: all 0.3s ease;
       cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
     }
     
     .location-card:hover {
       border-color: var(--accent);
       box-shadow: var(--shadow-md);
-      transform: translateX(4px);
+      transform: translateY(-4px);
+    }
+    
+    .directions-hint {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .location-card:hover .directions-hint {
+      opacity: 1;
     }
     
     .location-card h3 {
@@ -1425,10 +1444,6 @@
             <span>Trusted Since 1918</span>
           </div>
           <div class="trust-badge">
-            <span class="trust-icon">🚚</span>
-            <span>Free HK Delivery</span>
-          </div>
-          <div class="trust-badge">
             <span class="trust-icon">💳</span>
             <span>Secure Payment</span>
           </div>
@@ -1805,12 +1820,12 @@
     <div class="locations-container">
       <div class="section-header">
         <h2>Visit Us in Hong Kong</h2>
-        <p>Four locations across the city to serve you better</p>
+        <p>Two locations serving Hong Kong readers</p>
       </div>
       
       <div class="locations-grid">
         <div class="location-list">
-          <div class="location-card">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=33+Des+Voeux+Road+Central,+Central,+Hong+Kong" target="_blank" class="location-card" rel="noopener">
             <h3>
               <span>📍 Central (Flagship)</span>
               <span class="location-badge">Main Store</span>
@@ -1834,115 +1849,32 @@
                 <span>Central Station (Exit D2)</span>
               </div>
             </div>
-          </div>
+            <div class="directions-hint">👉 Click for directions</div>
+          </a>
           
-          <div class="location-card">
-            <h3>📍 Tsim Sha Tsui</h3>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Kelly+and+Walsh,+Admiralty,+Hong+Kong" target="_blank" class="location-card" rel="noopener">
+            <h3>📍 Admiralty - Kelly and Walsh</h3>
             <p class="location-address">
-              118 Nathan Road<br>
-              Tsim Sha Tsui, Kowloon<br>
+              Kelly and Walsh<br>
+              Admiralty, Hong Kong Island<br>
               Hong Kong
             </p>
             <div class="location-details">
               <div class="location-detail">
                 <strong>📞 Phone:</strong>
-                <span>+852 2234 5678</span>
+                <span>+852 2822 8783</span>
               </div>
               <div class="location-detail">
                 <strong>🕐 Hours:</strong>
-                <span>Daily 10:00-21:00</span>
+                <span>Mon-Sat 10:00-19:00, Sun Closed</span>
               </div>
               <div class="location-detail">
                 <strong>🚇 MTR:</strong>
-                <span>Tsim Sha Tsui Station (Exit B1)</span>
+                <span>Admiralty Station</span>
               </div>
             </div>
-          </div>
-          
-          <div class="location-card">
-            <h3>📍 Causeway Bay</h3>
-            <p class="location-address">
-              500 Hennessy Road<br>
-              Causeway Bay, Hong Kong Island<br>
-              Hong Kong
-            </p>
-            <div class="location-details">
-              <div class="location-detail">
-                <strong>📞 Phone:</strong>
-                <span>+852 2345 6789</span>
-              </div>
-              <div class="location-detail">
-                <strong>🕐 Hours:</strong>
-                <span>Daily 10:00-22:00</span>
-              </div>
-              <div class="location-detail">
-                <strong>🚇 MTR:</strong>
-                <span>Causeway Bay Station (Exit A)</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="location-card">
-            <h3>📍 Mong Kok</h3>
-            <p class="location-address">
-              628 Nathan Road<br>
-              Mong Kok, Kowloon<br>
-              Hong Kong
-            </p>
-            <div class="location-details">
-              <div class="location-detail">
-                <strong>📞 Phone:</strong>
-                <span>+852 2456 7890</span>
-              </div>
-              <div class="location-detail">
-                <strong>🕐 Hours:</strong>
-                <span>Daily 10:00-21:00</span>
-              </div>
-              <div class="location-detail">
-                <strong>🚇 MTR:</strong>
-                <span>Mong Kok Station (Exit C3)</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="map-container">
-          <!-- Google Maps Embed with Multiple Locations -->
-          <iframe 
-            src="https://www.google.com/maps/d/embed?mid=1nGx8xxxxxxxxxxx&ehbc=2E312F"
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-          
-          <!-- 
-          HOW TO ADD YOUR ACTUAL STORE LOCATIONS:
-          
-          1. Go to https://www.google.com/maps
-          2. Click the menu (☰) icon → "Your places" → "Maps" → "Create Map"
-          3. Name your map: "Swindon Book Co. Locations"
-          
-          4. Add all 4 store locations with EXACT addresses:
-             • Click "Add marker" (the pin icon)
-             • Search and add: "33 Des Voeux Road Central, Central, Hong Kong"
-             • Add label: "Central (Flagship Store)"
-             • Repeat for:
-               - "118 Nathan Road, Tsim Sha Tsui, Kowloon, Hong Kong"
-               - "500 Hennessy Road, Causeway Bay, Hong Kong"
-               - "628 Nathan Road, Mong Kok, Kowloon, Hong Kong"
-          
-          5. Click "Share" → "Embed on my website"
-          6. Copy the iframe code
-          7. Replace the iframe above with your custom code
-          
-          ALTERNATIVE - SINGLE SEARCH EMBED:
-          If you want a simple search-based map showing all locations:
-          - Use this URL format in the iframe src:
-          src="https://www.google.com/maps/embed/v1/search?key=YOUR_API_KEY&q=33+Des+Voeux+Road+Central+Hong+Kong|118+Nathan+Road+Tsim+Sha+Tsui|500+Hennessy+Road+Causeway+Bay|628+Nathan+Road+Mong+Kok"
-          
-          Note: You'll need a Google Maps API key for the search embed method.
-          The custom map method (option 1) is FREE and recommended.
-          -->
+            <div class="directions-hint">👉 Click for directions</div>
+          </a>
         </div>
       </div>
     </div>
@@ -1953,8 +1885,8 @@
     <div class="footer-content">
       <div class="footer-about">
         <h3>Swindon Book Co.</h3>
-        <p>A Hong Kong institution since 1918. For over a century, we've been serving readers across the city — from Central's bustling streets to Kowloon's vibrant neighborhoods. More than a bookstore, we're a cultural landmark and gathering place for Hong Kong's literary community.</p>
-        <p>Visit our locations across Hong Kong Island, Kowloon, and the New Territories, or browse our curated collection online.</p>
+        <p>A Hong Kong institution since 1918. For over a century, we've been serving readers in Central and Admiralty. More than a bookstore, we're a cultural landmark and gathering place for Hong Kong's literary community.</p>
+        <p>Visit our two Hong Kong Island locations, or browse our curated collection online.</p>
       </div>
       
       <div class="footer-col">
