@@ -175,63 +175,17 @@
       transform: translateY(-1px);
     }
     
-    /* Hero Section - Hong Kong cityscape vibe */
+    /* Hero Section - Hong Kong cityscape vibe with bookstore photo */
     .hero {
       background: 
-        linear-gradient(135deg, rgba(42, 38, 34, 0.92) 0%, rgba(107, 101, 96, 0.88) 100%),
+        linear-gradient(135deg, rgba(42, 38, 34, 0.85) 0%, rgba(107, 101, 96, 0.82) 100%),
+        url('swindon-bookstore-hero.jpg') center/cover no-repeat,
         repeating-linear-gradient(90deg, transparent 0px, transparent 60px, rgba(217, 117, 72, 0.03) 60px, rgba(217, 117, 72, 0.03) 61px),
         repeating-linear-gradient(0deg, transparent 0px, transparent 100px, rgba(217, 117, 72, 0.02) 100px, rgba(217, 117, 72, 0.02) 101px),
         linear-gradient(180deg, #1a1614 0%, #2a2622 50%, #3a3632 100%);
       padding: 80px 24px;
       position: relative;
       overflow: hidden;
-    }
-    
-    /* Hong Kong skyline silhouette at bottom */
-    .hero::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 180px;
-      background: 
-        linear-gradient(to top, rgba(42, 38, 34, 0.8) 0%, transparent 100%),
-        repeating-linear-gradient(90deg, 
-          transparent 0px, transparent 40px,
-          rgba(26, 22, 20, 0.6) 40px, rgba(26, 22, 20, 0.6) 45px,
-          transparent 45px, transparent 60px,
-          rgba(26, 22, 20, 0.7) 60px, rgba(26, 22, 20, 0.7) 68px,
-          transparent 68px, transparent 90px,
-          rgba(26, 22, 20, 0.5) 90px, rgba(26, 22, 20, 0.5) 100px,
-          transparent 100px, transparent 120px,
-          rgba(26, 22, 20, 0.8) 120px, rgba(26, 22, 20, 0.8) 132px,
-          transparent 132px, transparent 150px,
-          rgba(26, 22, 20, 0.6) 150px, rgba(26, 22, 20, 0.6) 158px
-        );
-      opacity: 0.4;
-    }
-    
-    /* Subtle Hong Kong harbor lights effect */
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: 160px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(217, 117, 72, 0.3) 10%,
-        transparent 20%,
-        rgba(217, 117, 72, 0.2) 35%,
-        transparent 45%,
-        rgba(217, 117, 72, 0.4) 60%,
-        transparent 70%,
-        rgba(217, 117, 72, 0.2) 85%,
-        transparent 100%
-      );
-      animation: harborLights 8s ease-in-out infinite;
     }
     
     @keyframes harborLights {
@@ -1521,7 +1475,6 @@
           <div class="category-content">
             <h3>Fiction & Literature</h3>
             <p>Classic novels to contemporary bestsellers</p>
-            <span class="category-count">12,500+ titles</span>
           </div>
         </div>
         
@@ -1532,7 +1485,6 @@
           <div class="category-content">
             <h3>Arts & Culture</h3>
             <p>Visual arts, music, film, and photography</p>
-            <span class="category-count">8,200+ titles</span>
           </div>
         </div>
         
@@ -1543,7 +1495,6 @@
           <div class="category-content">
             <h3>China & Hong Kong</h3>
             <p>Chinese history, culture, and local heritage</p>
-            <span class="category-count">15,000+ titles</span>
           </div>
         </div>
         
@@ -1554,7 +1505,6 @@
           <div class="category-content">
             <h3>Children's Books</h3>
             <p>Picture books, classics, and young adult</p>
-            <span class="category-count">9,500+ titles</span>
           </div>
         </div>
         
@@ -1565,7 +1515,6 @@
           <div class="category-content">
             <h3>Business & Management</h3>
             <p>Leadership, strategy, and entrepreneurship</p>
-            <span class="category-count">6,800+ titles</span>
           </div>
         </div>
         
@@ -1576,7 +1525,6 @@
           <div class="category-content">
             <h3>Academic & Reference</h3>
             <p>Textbooks and scholarly resources</p>
-            <span class="category-count">18,000+ titles</span>
           </div>
         </div>
       </div>
@@ -1725,84 +1673,6 @@
               <h4>Sarah Lau</h4>
               <p>Wan Chai, Hong Kong</p>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Mood-Based Collections -->
-  <section class="mood-collections">
-    <div class="container">
-      <div class="section-header">
-        <h2>Browse by Mood</h2>
-        <p>Find books that match how you're feeling</p>
-      </div>
-      
-      <div class="mood-grid">
-        <div class="mood-card">
-          <div class="mood-image">
-            <div class="mood-icon">☀️</div>
-          </div>
-          <div class="mood-content">
-            <h3>Books That Feel Like Summer</h3>
-            <p>Light, breezy reads perfect for lazy afternoons. Think beach vibes, road trips, and warm nostalgia.</p>
-            <span class="book-count">128 books in this collection →</span>
-          </div>
-        </div>
-        
-        <div class="mood-card">
-          <div class="mood-image">
-            <div class="mood-icon">🍂</div>
-          </div>
-          <div class="mood-content">
-            <h3>Cozy Rainy Day Reads</h3>
-            <p>Curl up with a blanket and these atmospheric, comforting stories. Perfect for when you want to stay in.</p>
-            <span class="book-count">215 books in this collection →</span>
-          </div>
-        </div>
-        
-        <div class="mood-card">
-          <div class="mood-image">
-            <div class="mood-icon">⚡</div>
-          </div>
-          <div class="mood-content">
-            <h3>Can't-Put-It-Down Thrillers</h3>
-            <p>Fast-paced page-turners that will keep you up way past bedtime. Suspenseful, twisty, and addictive.</p>
-            <span class="book-count">342 books in this collection →</span>
-          </div>
-        </div>
-        
-        <div class="mood-card">
-          <div class="mood-image">
-            <div class="mood-icon">💭</div>
-          </div>
-          <div class="mood-content">
-            <h3>Slow, Thoughtful Reads</h3>
-            <p>Literary fiction that asks big questions. Take your time with these contemplative, character-driven stories.</p>
-            <span class="book-count">187 books in this collection →</span>
-          </div>
-        </div>
-        
-        <div class="mood-card">
-          <div class="mood-image">
-            <div class="mood-icon">😊</div>
-          </div>
-          <div class="mood-content">
-            <h3>Feel-Good Escapism</h3>
-            <p>Uplifting stories with happy endings. When you need a break from reality and want something hopeful.</p>
-            <span class="book-count">294 books in this collection →</span>
-          </div>
-        </div>
-        
-        <div class="mood-card">
-          <div class="mood-image">
-            <div class="mood-icon">🔥</div>
-          </div>
-          <div class="mood-content">
-            <h3>Enemies to Lovers</h3>
-            <p>They start out hating each other... but you know how this ends. Romance with tension and chemistry.</p>
-            <span class="book-count">156 books in this collection →</span>
           </div>
         </div>
       </div>
@@ -2037,29 +1907,41 @@
         </div>
         
         <div class="map-container">
-          <!-- Google Maps Embed - Replace with your actual locations -->
+          <!-- Google Maps Embed with Multiple Locations -->
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29552.141876779434!2d114.15235597431643!3d22.28134698369805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404007d3a8e0df1%3A0xf08d65d98d1d93b0!2sCentral%2C%20Hong%20Kong!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+            src="https://www.google.com/maps/d/embed?mid=1nGx8xxxxxxxxxxx&ehbc=2E312F"
             allowfullscreen="" 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade">
           </iframe>
           
           <!-- 
-          TO CUSTOMIZE YOUR MAP:
-          1. Go to https://www.google.com/maps
-          2. Search for your actual store address
-          3. Click "Share" button
-          4. Click "Embed a map" tab
-          5. Copy the iframe code
-          6. Replace the iframe above with your custom code
+          HOW TO ADD YOUR ACTUAL STORE LOCATIONS:
           
-          OR to show multiple locations:
           1. Go to https://www.google.com/maps
-          2. Click the menu (☰) > "Your places" > "Maps"
-          3. Create a new map and add all 4 locations
-          4. Click "Share" > "Embed on my website"
-          5. Replace the iframe above
+          2. Click the menu (☰) icon → "Your places" → "Maps" → "Create Map"
+          3. Name your map: "Swindon Book Co. Locations"
+          
+          4. Add all 4 store locations with EXACT addresses:
+             • Click "Add marker" (the pin icon)
+             • Search and add: "33 Des Voeux Road Central, Central, Hong Kong"
+             • Add label: "Central (Flagship Store)"
+             • Repeat for:
+               - "118 Nathan Road, Tsim Sha Tsui, Kowloon, Hong Kong"
+               - "500 Hennessy Road, Causeway Bay, Hong Kong"
+               - "628 Nathan Road, Mong Kok, Kowloon, Hong Kong"
+          
+          5. Click "Share" → "Embed on my website"
+          6. Copy the iframe code
+          7. Replace the iframe above with your custom code
+          
+          ALTERNATIVE - SINGLE SEARCH EMBED:
+          If you want a simple search-based map showing all locations:
+          - Use this URL format in the iframe src:
+          src="https://www.google.com/maps/embed/v1/search?key=YOUR_API_KEY&q=33+Des+Voeux+Road+Central+Hong+Kong|118+Nathan+Road+Tsim+Sha+Tsui|500+Hennessy+Road+Causeway+Bay|628+Nathan+Road+Mong+Kok"
+          
+          Note: You'll need a Google Maps API key for the search embed method.
+          The custom map method (option 1) is FREE and recommended.
           -->
         </div>
       </div>
