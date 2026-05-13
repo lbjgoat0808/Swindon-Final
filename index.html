@@ -1,0 +1,2193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swindon Book Co. — Hong Kong's Premier Bookstore Since 1918</title>
+  <meta name="description" content="Hong Kong's premier independent bookstore since 1918. Discover curated collections, expert recommendations, and a community of book lovers.">
+  
+  <!-- Open Graph for LinkedIn/Social Sharing -->
+  <meta property="og:title" content="Swindon Book Co. — Hong Kong's Premier Bookstore Since 1918">
+  <meta property="og:description" content="Discover curated collections, expert recommendations, and a community of book lovers at Hong Kong's oldest independent bookstore.">
+  <meta property="og:type" content="website">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --accent: #D97548;
+      --accent-dark: #C45D3E;
+      --bg-cream: #F5F1E8;
+      --bg-tan: #E8DDD0;
+      --bg-white: #FFFCF7;
+      --text: #2a2622;
+      --text-secondary: #6b6560;
+      --text-light: #8b8580;
+      --border: rgba(42, 38, 34, 0.12);
+      --leather: #8B6F47;
+      --shadow-sm: 0 2px 8px rgba(42, 38, 34, 0.08);
+      --shadow-md: 0 4px 16px rgba(42, 38, 34, 0.12);
+      --shadow-lg: 0 8px 24px rgba(42, 38, 34, 0.15);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg-cream);
+      color: var(--text);
+      line-height: 1.6;
+      position: relative;
+    }
+    
+    /* Paper grain texture overlay with subtle Chinese lattice */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(42, 38, 34, 0.015) 2px, rgba(42, 38, 34, 0.015) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(42, 38, 34, 0.015) 2px, rgba(42, 38, 34, 0.015) 4px),
+        repeating-linear-gradient(45deg, transparent 0px, transparent 40px, rgba(217, 117, 72, 0.008) 40px, rgba(217, 117, 72, 0.008) 41px);
+      pointer-events: none;
+      z-index: 10000;
+      opacity: 0.6;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Instrument Serif', serif;
+    }
+    
+    /* Header/Nav */
+    header {
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    nav {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    
+    .logo {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    
+    .search-bar {
+      flex: 1;
+      max-width: 600px;
+      position: relative;
+    }
+    
+    .search-bar input {
+      width: 100%;
+      padding: 12px 48px 12px 20px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg-cream);
+      transition: all 0.3s ease;
+    }
+    
+    .search-bar input:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: var(--bg-white);
+      box-shadow: 0 0 0 3px rgba(217, 117, 72, 0.1);
+    }
+    
+    .search-bar button {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--accent);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.3s ease;
+    }
+    
+    .search-bar button:hover {
+      background: var(--accent-dark);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    
+    .cart-btn {
+      background: var(--accent);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .cart-btn:hover {
+      background: var(--accent-dark);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+    
+    /* Hero Section - Hong Kong cityscape vibe */
+    .hero {
+      background: 
+        linear-gradient(135deg, rgba(42, 38, 34, 0.92) 0%, rgba(107, 101, 96, 0.88) 100%),
+        repeating-linear-gradient(90deg, transparent 0px, transparent 60px, rgba(217, 117, 72, 0.03) 60px, rgba(217, 117, 72, 0.03) 61px),
+        repeating-linear-gradient(0deg, transparent 0px, transparent 100px, rgba(217, 117, 72, 0.02) 100px, rgba(217, 117, 72, 0.02) 101px),
+        linear-gradient(180deg, #1a1614 0%, #2a2622 50%, #3a3632 100%);
+      padding: 80px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Hong Kong skyline silhouette at bottom */
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 180px;
+      background: 
+        linear-gradient(to top, rgba(42, 38, 34, 0.8) 0%, transparent 100%),
+        repeating-linear-gradient(90deg, 
+          transparent 0px, transparent 40px,
+          rgba(26, 22, 20, 0.6) 40px, rgba(26, 22, 20, 0.6) 45px,
+          transparent 45px, transparent 60px,
+          rgba(26, 22, 20, 0.7) 60px, rgba(26, 22, 20, 0.7) 68px,
+          transparent 68px, transparent 90px,
+          rgba(26, 22, 20, 0.5) 90px, rgba(26, 22, 20, 0.5) 100px,
+          transparent 100px, transparent 120px,
+          rgba(26, 22, 20, 0.8) 120px, rgba(26, 22, 20, 0.8) 132px,
+          transparent 132px, transparent 150px,
+          rgba(26, 22, 20, 0.6) 150px, rgba(26, 22, 20, 0.6) 158px
+        );
+      opacity: 0.4;
+    }
+    
+    /* Subtle Hong Kong harbor lights effect */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 160px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(217, 117, 72, 0.3) 10%,
+        transparent 20%,
+        rgba(217, 117, 72, 0.2) 35%,
+        transparent 45%,
+        rgba(217, 117, 72, 0.4) 60%,
+        transparent 70%,
+        rgba(217, 117, 72, 0.2) 85%,
+        transparent 100%
+      );
+      animation: harborLights 8s ease-in-out infinite;
+    }
+    
+    @keyframes harborLights {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+    
+    .hero-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-text {
+      color: white;
+    }
+    
+    .heritage-badge {
+      display: inline-block;
+      background: rgba(255, 252, 247, 0.2);
+      border: 2px solid rgba(255, 252, 247, 0.4);
+      padding: 8px 20px;
+      border-radius: 24px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      backdrop-filter: blur(4px);
+    }
+    
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+    
+    .hero-text .tagline {
+      font-size: 1.3rem;
+      margin-bottom: 32px;
+      opacity: 0.95;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      line-height: 1.6;
+    }
+    
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+    
+    .stat-card {
+      background: rgba(255, 252, 247, 0.95);
+      padding: 24px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(8px);
+    }
+    
+    .stat-number {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+      line-height: 1;
+    }
+    
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+    }
+    
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 252, 247, 0.95);
+      color: var(--text);
+      padding: 14px 32px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(8px);
+    }
+    
+    .btn-secondary:hover {
+      background: white;
+      transform: translateY(-2px);
+    }
+    
+    .trust-indicators {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .trust-icon {
+      font-size: 1.4rem;
+    }
+    
+    /* Awards/Press Section */
+    .awards-strip {
+      background: white;
+      padding: 24px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .awards-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    
+    .award-item {
+      text-align: center;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+    
+    .award-item:hover {
+      opacity: 1;
+    }
+    
+    .award-icon {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+    
+    .award-text {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    /* Categories Section - Hong Kong urban vibe */
+    .categories {
+      background: 
+        linear-gradient(180deg, rgba(42, 38, 34, 0.95) 0%, rgba(26, 22, 20, 0.98) 100%),
+        repeating-linear-gradient(0deg, transparent 0px, transparent 100px, rgba(217, 117, 72, 0.02) 100px, rgba(217, 117, 72, 0.02) 101px);
+      padding: 80px 24px;
+      position: relative;
+    }
+    
+    .categories::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(217, 117, 72, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(217, 117, 72, 0.02) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    
+    .section-header h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    
+    .section-header p {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+    }
+    
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+    
+    .category-card {
+      background: var(--bg-white);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+    }
+    
+    .category-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .category-image {
+      height: 180px;
+      background: linear-gradient(135deg, #8B6F47 0%, #C2A87E 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .category-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .category-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.05) 10px, rgba(255,255,255,0.05) 20px);
+      z-index: 2;
+      pointer-events: none;
+    }
+    
+    .category-content {
+      padding: 28px;
+    }
+    
+    .category-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    
+    .category-content p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+    
+    .category-count {
+      display: inline-block;
+      background: var(--bg-tan);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    
+    /* Contact CTA */
+    .contact-cta {
+      background: linear-gradient(135deg, rgba(217, 117, 72, 0.1) 0%, rgba(196, 93, 62, 0.1) 100%);
+      border: 2px solid rgba(217, 117, 72, 0.3);
+      border-radius: 12px;
+      padding: 20px 28px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    
+    .contact-cta p {
+      color: var(--text);
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    
+    .contact-icons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      padding: 10px 20px;
+      border-radius: 24px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .contact-link:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .contact-link svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .contact-link.whatsapp svg {
+      fill: #25D366;
+    }
+    
+    .contact-link.wechat svg {
+      fill: #09B83E;
+    }
+    
+    /* Staff Picks - Modern Hong Kong aesthetic */
+    .staff-picks {
+      padding: 80px 24px;
+      background: 
+        linear-gradient(180deg, rgba(245, 241, 232, 0.98) 0%, rgba(232, 221, 208, 0.95) 100%),
+        repeating-linear-gradient(90deg, transparent 0px, transparent 200px, rgba(217, 117, 72, 0.02) 200px, rgba(217, 117, 72, 0.02) 201px);
+      position: relative;
+    }
+    
+    .staff-picks::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 70% 20%, rgba(217, 117, 72, 0.03) 0%, transparent 40%);
+      pointer-events: none;
+    }
+    
+    .picks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 32px;
+    }
+    
+    .book-card {
+      background: var(--bg-white);
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    
+    .book-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-6px);
+    }
+    
+    .book-cover {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      aspect-ratio: 2/3;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 16px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .book-cover::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.2) 100%);
+    }
+    
+    .book-card:nth-child(2) .book-cover { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+    .book-card:nth-child(3) .book-cover { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+    .book-card:nth-child(4) .book-cover { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+    .book-card:nth-child(5) .book-cover { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+    .book-card:nth-child(6) .book-cover { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+    
+    .book-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    
+    .book-author {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+    
+    .book-price {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+    
+    .staff-pick-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #FFF3E0 0%, #FFE5CC 100%);
+      color: var(--accent-dark);
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-top: 12px;
+      border: 1px solid rgba(217, 117, 72, 0.2);
+    }
+    
+    .staff-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+    
+    .staff-name {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+    
+    /* Testimonials */
+    .testimonials {
+      padding: 80px 24px;
+      background: white;
+    }
+    
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+    
+    .testimonial-card {
+      background: var(--bg-cream);
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      border-left: 4px solid var(--accent);
+      transition: all 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    
+    .quote-icon {
+      font-size: 3rem;
+      color: var(--accent);
+      opacity: 0.3;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    
+    .testimonial-text {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+      color: var(--text);
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .author-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    
+    .author-info h4 {
+      font-size: 1rem;
+      margin-bottom: 2px;
+      color: var(--text);
+    }
+    
+    .author-info p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    
+    .stars {
+      color: #FFB800;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+    
+    /* Mood Collections - Hong Kong evening vibe */
+    .mood-collections {
+      background: 
+        linear-gradient(180deg, rgba(232, 221, 208, 0.95) 0%, rgba(245, 241, 232, 0.98) 100%),
+        repeating-linear-gradient(0deg, transparent 0px, transparent 150px, rgba(217, 117, 72, 0.015) 150px, rgba(217, 117, 72, 0.015) 151px);
+      padding: 80px 24px;
+      position: relative;
+    }
+    
+    .mood-collections::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 30% 80%, rgba(217, 117, 72, 0.025) 0%, transparent 50%),
+        radial-gradient(circle at 90% 30%, rgba(217, 117, 72, 0.02) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    .mood-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 28px;
+    }
+    
+    .mood-card {
+      background: var(--bg-white);
+      border-radius: 16px;
+      padding: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+    }
+    
+    .mood-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+    
+    .mood-image {
+      height: 160px;
+      background: linear-gradient(135deg, rgba(139, 111, 71, 0.8) 0%, rgba(194, 168, 126, 0.8) 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      position: relative;
+    }
+    
+    .mood-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.02) 10px, rgba(0,0,0,0.02) 20px);
+    }
+    
+    .mood-card:nth-child(2) .mood-image { background: linear-gradient(135deg, rgba(217, 117, 72, 0.7) 0%, rgba(232, 168, 124, 0.7) 100%); }
+    .mood-card:nth-child(3) .mood-image { background: linear-gradient(135deg, rgba(107, 101, 96, 0.8) 0%, rgba(155, 149, 144, 0.8) 100%); }
+    .mood-card:nth-child(4) .mood-image { background: linear-gradient(135deg, rgba(74, 155, 127, 0.8) 0%, rgba(127, 202, 179, 0.8) 100%); }
+    .mood-card:nth-child(5) .mood-image { background: linear-gradient(135deg, rgba(250, 112, 154, 0.7) 0%, rgba(254, 225, 64, 0.7) 100%); }
+    .mood-card:nth-child(6) .mood-image { background: linear-gradient(135deg, rgba(217, 117, 72, 0.8) 0%, rgba(139, 111, 71, 0.8) 100%); }
+    
+    .mood-icon {
+      font-size: 2.5rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .mood-content {
+      padding: 28px;
+    }
+    
+    .mood-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    
+    .mood-content p {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+    
+    .book-count {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    
+    /* Newsletter */
+    .newsletter {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+      padding: 80px 24px;
+      color: white;
+      text-align: center;
+    }
+    
+    .newsletter h2 {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    
+    .newsletter p {
+      font-size: 1.15rem;
+      margin-bottom: 32px;
+      opacity: 0.95;
+    }
+    
+    .newsletter-form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      gap: 12px;
+    }
+    
+    .newsletter-form input {
+      flex: 1;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'DM Sans', sans-serif;
+    }
+    
+    .newsletter-form button {
+      padding: 14px 32px;
+      background: white;
+      color: var(--accent);
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+    
+    .newsletter-form button:hover {
+      background: var(--bg-cream);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    /* New Arrivals - Hong Kong modern vibe */
+    .new-arrivals {
+      padding: 80px 24px;
+      background: 
+        linear-gradient(180deg, rgba(245, 241, 232, 0.98) 0%, rgba(232, 221, 208, 0.95) 100%),
+        repeating-linear-gradient(90deg, transparent 0px, transparent 180px, rgba(217, 117, 72, 0.015) 180px, rgba(217, 117, 72, 0.015) 181px);
+    }
+    
+    .arrivals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 28px;
+    }
+    
+    /* Events - Hong Kong cultural vibe */
+    .events {
+      background: 
+        linear-gradient(180deg, rgba(232, 221, 208, 0.95) 0%, rgba(245, 241, 232, 0.98) 100%),
+        repeating-linear-gradient(0deg, transparent 0px, transparent 120px, rgba(217, 117, 72, 0.02) 120px, rgba(217, 117, 72, 0.02) 121px);
+      padding: 80px 24px;
+    }
+    
+    .events-list {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .event-card {
+      background: var(--bg-white);
+      border-radius: 16px;
+      padding: 36px;
+      margin-bottom: 28px;
+      display: flex;
+      gap: 32px;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+    }
+    
+    .event-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateX(4px);
+    }
+    
+    .event-date {
+      text-align: center;
+      min-width: 90px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+      color: white;
+      padding: 20px 16px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .event-day {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1;
+      font-family: 'Instrument Serif', serif;
+    }
+    
+    .event-month {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 6px;
+      opacity: 0.9;
+    }
+    
+    .event-details h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    
+    .event-meta {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    
+    .event-details p {
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+    
+    /* Locations Map Section */
+    .locations-map {
+      background: white;
+      padding: 80px 24px;
+      border-top: 1px solid var(--border);
+    }
+    
+    .locations-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .locations-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 48px;
+      margin-top: 48px;
+    }
+    
+    .location-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    
+    .location-card {
+      background: var(--bg-cream);
+      padding: 28px;
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .location-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-md);
+      transform: translateX(4px);
+    }
+    
+    .location-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .location-badge {
+      background: var(--accent);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .location-address {
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+    
+    .location-details {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    
+    .location-detail {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    
+    .location-detail strong {
+      color: var(--text);
+      min-width: 80px;
+    }
+    
+    .map-container {
+      background: var(--bg-tan);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 2px solid var(--border);
+      height: 600px;
+      position: relative;
+    }
+    
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .map-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+    
+    .map-placeholder svg {
+      width: 80px;
+      height: 80px;
+      fill: var(--accent);
+      opacity: 0.5;
+    }
+    
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #2a2622 0%, #3a3632 100%);
+      color: #E8DDD0;
+      padding: 70px 24px 36px;
+      box-shadow: inset 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 56px;
+      margin-bottom: 48px;
+    }
+    
+    .footer-about h3 {
+      color: var(--accent);
+      margin-bottom: 20px;
+      font-size: 1.6rem;
+    }
+    
+    .footer-about p {
+      line-height: 1.8;
+      color: #C2B5A8;
+      margin-bottom: 18px;
+    }
+    
+    .footer-col h4 {
+      margin-bottom: 20px;
+      color: white;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+    
+    .footer-col ul {
+      list-style: none;
+    }
+    
+    .footer-col li {
+      margin-bottom: 14px;
+    }
+    
+    .footer-col a {
+      color: #C2B5A8;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-col a:hover {
+      color: var(--accent);
+    }
+    
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-top: 36px;
+      border-top: 1px solid rgba(232, 221, 208, 0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #B8B3AE;
+      font-size: 0.9rem;
+    }
+    
+    .affiliates {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+    
+    .affiliates strong {
+      color: #E8DDD0;
+    }
+    
+    /* Floating Contact Buttons */
+    .floating-contacts {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 9999;
+    }
+    
+    .contact-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-lg);
+      text-decoration: none;
+    }
+    
+    .contact-btn:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 32px rgba(42, 38, 34, 0.25);
+    }
+    
+    .whatsapp-btn {
+      background: #25D366;
+    }
+    
+    .wechat-btn {
+      background: #09B83E;
+    }
+    
+    .contact-btn svg {
+      width: 32px;
+      height: 32px;
+      fill: white;
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 1024px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero-text h1 {
+        font-size: 2.8rem;
+      }
+      
+      .hero-stats {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      
+      .search-bar {
+        order: 3;
+        width: 100%;
+        max-width: 100%;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .hero {
+        padding: 60px 20px;
+      }
+      
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero-stats {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .picks-grid,
+      .arrivals-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 20px;
+      }
+      
+      .mood-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .event-card {
+        flex-direction: column;
+        padding: 28px;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+      
+      .floating-contacts {
+        bottom: 20px;
+        right: 20px;
+        gap: 12px;
+      }
+      
+      .contact-btn {
+        width: 52px;
+        height: 52px;
+      }
+      
+      .contact-btn svg {
+        width: 28px;
+        height: 28px;
+      }
+      
+      .contact-icons {
+        flex-direction: column;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+      
+      .awards-container {
+        gap: 24px;
+      }
+      
+      .trust-indicators {
+        justify-content: center;
+      }
+      
+      .locations-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .map-container {
+        height: 400px;
+        order: -1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <a href="#" class="logo">Swindon Book Co.</a>
+      
+      <div class="search-bar">
+        <input type="text" placeholder='Try "cozy mystery", "enemies to lovers", or any book title...'>
+        <button>Search</button>
+      </div>
+      
+      <div class="nav-links">
+        <a href="#categories">Browse</a>
+        <a href="#events">Events</a>
+        <a href="#about">About</a>
+        <a href="#" class="cart-btn">Cart (0)</a>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="heritage-badge">Est. 1918 • Hong Kong Heritage</span>
+        <h1>Discover Your Next Great Read</h1>
+        <p class="tagline">In the heart of Hong Kong for over a century. From Central to Kowloon, we've been the city's gathering place for readers, thinkers, and dreamers since 1918.</p>
+        
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat-number">100K+</span>
+            <span class="stat-label">Books in Stock</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">105</span>
+            <span class="stat-label">Years of Service</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">Events Annually</span>
+          </div>
+        </div>
+        
+        <div class="hero-ctas">
+          <a href="#staff-picks" class="btn-primary">Browse Staff Picks</a>
+          <a href="#new" class="btn-secondary">New Arrivals</a>
+        </div>
+        
+        <div class="trust-indicators">
+          <div class="trust-badge">
+            <span class="trust-icon">✓</span>
+            <span>Trusted Since 1918</span>
+          </div>
+          <div class="trust-badge">
+            <span class="trust-icon">🚚</span>
+            <span>Free HK Delivery</span>
+          </div>
+          <div class="trust-badge">
+            <span class="trust-icon">💳</span>
+            <span>Secure Payment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Awards/Press Strip -->
+  <section class="awards-strip">
+    <div class="awards-container">
+      <div class="award-item">
+        <span class="award-icon">🏆</span>
+        <div class="award-text">Best Independent Bookstore<br>SCMP Readers' Choice 2024</div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">📰</span>
+        <div class="award-text">Featured In<br>Time Out Hong Kong</div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">⭐</span>
+        <div class="award-text">4.9/5 Stars<br>2,400+ Hong Kong Reviews</div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">🏛️</span>
+        <div class="award-text">Hong Kong Heritage<br>Tourism Board Certified</div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Categories -->
+  <section class="categories" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <h2>Browse by Category</h2>
+        <p>Find exactly what you're looking for — or discover something new</p>
+      </div>
+      
+      <div class="category-grid">
+        <div class="category-card">
+          <div class="category-image">
+            <img src="images/fiction-and-literature-pic.jpg" alt="Fiction & Literature books">
+          </div>
+          <div class="category-content">
+            <h3>Fiction & Literature</h3>
+            <p>Classic novels to contemporary bestsellers</p>
+            <span class="category-count">12,500+ titles</span>
+          </div>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-image">
+            <img src="images/arts-and-culture-pic.jpg" alt="Arts & Culture books">
+          </div>
+          <div class="category-content">
+            <h3>Arts & Culture</h3>
+            <p>Visual arts, music, film, and photography</p>
+            <span class="category-count">8,200+ titles</span>
+          </div>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-image">
+            <img src="images/china-and-hong-kong-pic.jpg" alt="China & Hong Kong books">
+          </div>
+          <div class="category-content">
+            <h3>China & Hong Kong</h3>
+            <p>Chinese history, culture, and local heritage</p>
+            <span class="category-count">15,000+ titles</span>
+          </div>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-image">
+            <img src="images/childrens-books-pic.jpg" alt="Children's Books">
+          </div>
+          <div class="category-content">
+            <h3>Children's Books</h3>
+            <p>Picture books, classics, and young adult</p>
+            <span class="category-count">9,500+ titles</span>
+          </div>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-image">
+            <img src="images/business-and-management-pic.jpg" alt="Business & Management books">
+          </div>
+          <div class="category-content">
+            <h3>Business & Management</h3>
+            <p>Leadership, strategy, and entrepreneurship</p>
+            <span class="category-count">6,800+ titles</span>
+          </div>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-image">
+            <img src="images/academic-and-reference-pic.jpg" alt="Academic & Reference books">
+          </div>
+          <div class="category-content">
+            <h3>Academic & Reference</h3>
+            <p>Textbooks and scholarly resources</p>
+            <span class="category-count">18,000+ titles</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Can't Find Your Book CTA -->
+      <div class="contact-cta">
+        <p>📚 Can't find the book you're looking for?</p>
+        <div class="contact-icons">
+          <a href="https://wa.me/85212345678" class="contact-link whatsapp" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            WhatsApp Us
+          </a>
+          <a href="weixin://" class="contact-link wechat">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 01.598.082l1.584.926a.272.272 0 00.14.045c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 01.181-.556c1.529-1.126 2.498-2.922 2.498-4.63 0-3.697-3.51-6.693-7.061-6.693zm-2.694 3.59c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.97-.982zm5.39 0c.535 0 .969.44.969.982a.976.976 0 01-.97.983.976.976 0 01-.968-.983c0-.542.434-.982.969-.982z"/>
+            </svg>
+            Message on WeChat
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Staff Picks -->
+  <section class="staff-picks" id="staff-picks">
+    <div class="container">
+      <div class="section-header">
+        <h2>Staff Recommendations</h2>
+        <p>Handpicked by our team of book lovers</p>
+      </div>
+      
+      <div class="picks-grid">
+        <div class="book-card">
+          <div class="book-cover">The Midnight Library</div>
+          <div class="book-title">The Midnight Library</div>
+          <div class="book-author">Matt Haig</div>
+          <div class="book-price">HK$158</div>
+          <div class="staff-pick-badge">
+            <div class="staff-avatar">S</div>
+            <span class="staff-name">Sarah, Fiction</span>
+          </div>
+        </div>
+        
+        <div class="book-card">
+          <div class="book-cover">Atomic Habits</div>
+          <div class="book-title">Atomic Habits</div>
+          <div class="book-author">James Clear</div>
+          <div class="book-price">HK$180</div>
+          <div class="staff-pick-badge">
+            <div class="staff-avatar">M</div>
+            <span class="staff-name">Michael, Non-Fiction</span>
+          </div>
+        </div>
+        
+        <div class="book-card">
+          <div class="book-cover">Tomorrow, and Tomorrow, and Tomorrow</div>
+          <div class="book-title">Tomorrow, and Tomorrow...</div>
+          <div class="book-author">Gabrielle Zevin</div>
+          <div class="book-price">HK$195</div>
+          <div class="staff-pick-badge">
+            <div class="staff-avatar">J</div>
+            <span class="staff-name">Jenny, Contemporary</span>
+          </div>
+        </div>
+        
+        <div class="book-card">
+          <div class="book-cover">The Seven Moons of Maali Almeida</div>
+          <div class="book-title">Seven Moons of Maali Almeida</div>
+          <div class="book-author">Shehan Karunatilaka</div>
+          <div class="book-price">HK$165</div>
+          <div class="staff-pick-badge">
+            <div class="staff-avatar">D</div>
+            <span class="staff-name">David, International</span>
+          </div>
+        </div>
+        
+        <div class="book-card">
+          <div class="book-cover">Braiding Sweetgrass</div>
+          <div class="book-title">Braiding Sweetgrass</div>
+          <div class="book-author">Robin Wall Kimmerer</div>
+          <div class="book-price">HK$175</div>
+          <div class="staff-pick-badge">
+            <div class="staff-avatar">L</div>
+            <span class="staff-name">Lisa, Nature</span>
+          </div>
+        </div>
+        
+        <div class="book-card">
+          <div class="book-cover">The Books of Jacob</div>
+          <div class="book-title">The Books of Jacob</div>
+          <div class="book-author">Olga Tokarczuk</div>
+          <div class="book-price">HK$220</div>
+          <div class="staff-pick-badge">
+            <div class="staff-avatar">P</div>
+            <span class="staff-name">Peter, Literary</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <h2>What Our Customers Say</h2>
+        <p>Trusted by Hong Kong's book-loving community</p>
+      </div>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <div class="quote-icon">"</div>
+          <p class="testimonial-text">Swindon has been my sanctuary for 15 years. Whether I'm browsing their Central location before work or spending a Sunday afternoon in their Tsim Sha Tsui shop, the staff recommendations are always perfect. A true Hong Kong treasure.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">E</div>
+            <div class="author-info">
+              <h4>Emily Chen</h4>
+              <p>Mid-Levels, Hong Kong</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <div class="quote-icon">"</div>
+          <p class="testimonial-text">Best curated selection in Hong Kong, hands down. They introduced me to authors I never would have discovered on my own. The literary events bring together the city's most interesting minds. Worth the trip from Kowloon every time.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">J</div>
+            <div class="author-info">
+              <h4>James Wong</h4>
+              <p>Mong Kok, Kowloon</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <div class="quote-icon">"</div>
+          <p class="testimonial-text">More than a bookstore — it's a Hong Kong cultural institution. The heritage, the knowledge of the staff, the quality of their selection. Every visit reminds me why independent bookstores matter in this city.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div class="author-info">
+              <h4>Sarah Lau</h4>
+              <p>Wan Chai, Hong Kong</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Mood-Based Collections -->
+  <section class="mood-collections">
+    <div class="container">
+      <div class="section-header">
+        <h2>Browse by Mood</h2>
+        <p>Find books that match how you're feeling</p>
+      </div>
+      
+      <div class="mood-grid">
+        <div class="mood-card">
+          <div class="mood-image">
+            <div class="mood-icon">☀️</div>
+          </div>
+          <div class="mood-content">
+            <h3>Books That Feel Like Summer</h3>
+            <p>Light, breezy reads perfect for lazy afternoons. Think beach vibes, road trips, and warm nostalgia.</p>
+            <span class="book-count">128 books in this collection →</span>
+          </div>
+        </div>
+        
+        <div class="mood-card">
+          <div class="mood-image">
+            <div class="mood-icon">🍂</div>
+          </div>
+          <div class="mood-content">
+            <h3>Cozy Rainy Day Reads</h3>
+            <p>Curl up with a blanket and these atmospheric, comforting stories. Perfect for when you want to stay in.</p>
+            <span class="book-count">215 books in this collection →</span>
+          </div>
+        </div>
+        
+        <div class="mood-card">
+          <div class="mood-image">
+            <div class="mood-icon">⚡</div>
+          </div>
+          <div class="mood-content">
+            <h3>Can't-Put-It-Down Thrillers</h3>
+            <p>Fast-paced page-turners that will keep you up way past bedtime. Suspenseful, twisty, and addictive.</p>
+            <span class="book-count">342 books in this collection →</span>
+          </div>
+        </div>
+        
+        <div class="mood-card">
+          <div class="mood-image">
+            <div class="mood-icon">💭</div>
+          </div>
+          <div class="mood-content">
+            <h3>Slow, Thoughtful Reads</h3>
+            <p>Literary fiction that asks big questions. Take your time with these contemplative, character-driven stories.</p>
+            <span class="book-count">187 books in this collection →</span>
+          </div>
+        </div>
+        
+        <div class="mood-card">
+          <div class="mood-image">
+            <div class="mood-icon">😊</div>
+          </div>
+          <div class="mood-content">
+            <h3>Feel-Good Escapism</h3>
+            <p>Uplifting stories with happy endings. When you need a break from reality and want something hopeful.</p>
+            <span class="book-count">294 books in this collection →</span>
+          </div>
+        </div>
+        
+        <div class="mood-card">
+          <div class="mood-image">
+            <div class="mood-icon">🔥</div>
+          </div>
+          <div class="mood-content">
+            <h3>Enemies to Lovers</h3>
+            <p>They start out hating each other... but you know how this ends. Romance with tension and chemistry.</p>
+            <span class="book-count">156 books in this collection →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Newsletter Signup -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>Stay Updated</h2>
+      <p>Get weekly book recommendations, event invitations, and exclusive offers.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+  
+  <!-- New Arrivals -->
+  <section class="new-arrivals" id="new">
+    <div class="container">
+      <div class="section-header">
+        <h2>New Arrivals This Week</h2>
+        <p>Fresh off the shelves — 48 new titles added</p>
+      </div>
+      
+      <div class="arrivals-grid">
+        <div class="book-card">
+          <div class="book-cover">New Title 1</div>
+          <div class="book-title">Recent Release</div>
+          <div class="book-author">Author Name</div>
+          <div class="book-price">HK$145</div>
+        </div>
+        <div class="book-card">
+          <div class="book-cover">New Title 2</div>
+          <div class="book-title">Just Arrived</div>
+          <div class="book-author">Author Name</div>
+          <div class="book-price">HK$168</div>
+        </div>
+        <div class="book-card">
+          <div class="book-cover">New Title 3</div>
+          <div class="book-title">Fresh Pick</div>
+          <div class="book-author">Author Name</div>
+          <div class="book-price">HK$192</div>
+        </div>
+        <div class="book-card">
+          <div class="book-cover">New Title 4</div>
+          <div class="book-title">Latest Find</div>
+          <div class="book-author">Author Name</div>
+          <div class="book-price">HK$155</div>
+        </div>
+        <div class="book-card">
+          <div class="book-cover">New Title 5</div>
+          <div class="book-title">Brand New</div>
+          <div class="book-author">Author Name</div>
+          <div class="book-price">HK$175</div>
+        </div>
+        <div class="book-card">
+          <div class="book-cover">New Title 6</div>
+          <div class="book-title">Hot Off Press</div>
+          <div class="book-author">Author Name</div>
+          <div class="book-price">HK$188</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Events -->
+  <section class="events" id="events">
+    <div class="container">
+      <div class="section-header">
+        <h2>Upcoming Events</h2>
+        <p>Author signings, book clubs, and literary gatherings</p>
+      </div>
+      
+      <div class="events-list">
+        <div class="event-card">
+          <div class="event-date">
+            <div class="event-day">15</div>
+            <div class="event-month">May</div>
+          </div>
+          <div class="event-details">
+            <h3>Author Talk: Gabrielle Zevin</h3>
+            <p class="event-meta">
+              <span>⏰ 7:00 PM</span>
+              <span>📍 Main Store</span>
+              <span>🎟️ Free Entry</span>
+            </p>
+            <p>Join us for an intimate conversation with bestselling author Gabrielle Zevin as she discusses her latest novel and takes questions from the audience.</p>
+          </div>
+        </div>
+        
+        <div class="event-card">
+          <div class="event-date">
+            <div class="event-day">22</div>
+            <div class="event-month">May</div>
+          </div>
+          <div class="event-details">
+            <h3>Fiction Book Club: Modern Classics</h3>
+            <p class="event-meta">
+              <span>⏰ 6:30 PM</span>
+              <span>📍 Community Room</span>
+              <span>👥 Members Only</span>
+            </p>
+            <p>This month we're reading "The Remains of the Day" by Kazuo Ishiguro. New members welcome — sign up at the counter.</p>
+          </div>
+        </div>
+        
+        <div class="event-card">
+          <div class="event-date">
+            <div class="event-day">29</div>
+            <div class="event-month">May</div>
+          </div>
+          <div class="event-details">
+            <h3>Children's Storytime: Saturday Morning</h3>
+            <p class="event-meta">
+              <span>⏰ 10:00 AM</span>
+              <span>📍 Children's Section</span>
+              <span>🎟️ Free</span>
+            </p>
+            <p>Bring the kids for stories, songs, and activities. Perfect for ages 3-7. Light refreshments provided.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Our Locations -->
+  <section class="locations-map" id="locations">
+    <div class="locations-container">
+      <div class="section-header">
+        <h2>Visit Us in Hong Kong</h2>
+        <p>Four locations across the city to serve you better</p>
+      </div>
+      
+      <div class="locations-grid">
+        <div class="location-list">
+          <div class="location-card">
+            <h3>
+              <span>📍 Central (Flagship)</span>
+              <span class="location-badge">Main Store</span>
+            </h3>
+            <p class="location-address">
+              33 Des Voeux Road Central<br>
+              Central, Hong Kong Island<br>
+              Hong Kong
+            </p>
+            <div class="location-details">
+              <div class="location-detail">
+                <strong>📞 Phone:</strong>
+                <span>+852 2123 4567</span>
+              </div>
+              <div class="location-detail">
+                <strong>🕐 Hours:</strong>
+                <span>Mon-Sat 9:00-21:00, Sun 10:00-19:00</span>
+              </div>
+              <div class="location-detail">
+                <strong>🚇 MTR:</strong>
+                <span>Central Station (Exit D2)</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="location-card">
+            <h3>📍 Tsim Sha Tsui</h3>
+            <p class="location-address">
+              118 Nathan Road<br>
+              Tsim Sha Tsui, Kowloon<br>
+              Hong Kong
+            </p>
+            <div class="location-details">
+              <div class="location-detail">
+                <strong>📞 Phone:</strong>
+                <span>+852 2234 5678</span>
+              </div>
+              <div class="location-detail">
+                <strong>🕐 Hours:</strong>
+                <span>Daily 10:00-21:00</span>
+              </div>
+              <div class="location-detail">
+                <strong>🚇 MTR:</strong>
+                <span>Tsim Sha Tsui Station (Exit B1)</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="location-card">
+            <h3>📍 Causeway Bay</h3>
+            <p class="location-address">
+              500 Hennessy Road<br>
+              Causeway Bay, Hong Kong Island<br>
+              Hong Kong
+            </p>
+            <div class="location-details">
+              <div class="location-detail">
+                <strong>📞 Phone:</strong>
+                <span>+852 2345 6789</span>
+              </div>
+              <div class="location-detail">
+                <strong>🕐 Hours:</strong>
+                <span>Daily 10:00-22:00</span>
+              </div>
+              <div class="location-detail">
+                <strong>🚇 MTR:</strong>
+                <span>Causeway Bay Station (Exit A)</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="location-card">
+            <h3>📍 Mong Kok</h3>
+            <p class="location-address">
+              628 Nathan Road<br>
+              Mong Kok, Kowloon<br>
+              Hong Kong
+            </p>
+            <div class="location-details">
+              <div class="location-detail">
+                <strong>📞 Phone:</strong>
+                <span>+852 2456 7890</span>
+              </div>
+              <div class="location-detail">
+                <strong>🕐 Hours:</strong>
+                <span>Daily 10:00-21:00</span>
+              </div>
+              <div class="location-detail">
+                <strong>🚇 MTR:</strong>
+                <span>Mong Kok Station (Exit C3)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="map-container">
+          <!-- Google Maps Embed - Replace with your actual locations -->
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29552.141876779434!2d114.15235597431643!3d22.28134698369805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404007d3a8e0df1%3A0xf08d65d98d1d93b0!2sCentral%2C%20Hong%20Kong!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          
+          <!-- 
+          TO CUSTOMIZE YOUR MAP:
+          1. Go to https://www.google.com/maps
+          2. Search for your actual store address
+          3. Click "Share" button
+          4. Click "Embed a map" tab
+          5. Copy the iframe code
+          6. Replace the iframe above with your custom code
+          
+          OR to show multiple locations:
+          1. Go to https://www.google.com/maps
+          2. Click the menu (☰) > "Your places" > "Maps"
+          3. Create a new map and add all 4 locations
+          4. Click "Share" > "Embed on my website"
+          5. Replace the iframe above
+          -->
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer id="about">
+    <div class="footer-content">
+      <div class="footer-about">
+        <h3>Swindon Book Co.</h3>
+        <p>A Hong Kong institution since 1918. For over a century, we've been serving readers across the city — from Central's bustling streets to Kowloon's vibrant neighborhoods. More than a bookstore, we're a cultural landmark and gathering place for Hong Kong's literary community.</p>
+        <p>Visit our locations across Hong Kong Island, Kowloon, and the New Territories, or browse our curated collection online.</p>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Bestsellers</a></li>
+          <li><a href="#">Staff Picks</a></li>
+          <li><a href="#">Sale Items</a></li>
+          <li><a href="#">Gift Cards</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#locations">Locations</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#">Book Clubs</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Gift Wrapping</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div>&copy; 2026 Swindon Book Co. Ltd. All rights reserved.</div>
+      <div class="affiliates">
+        Affiliated with: <strong>Hong Kong Book Centre</strong> • <strong>Kelly & Walsh</strong>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Floating Contact Buttons -->
+  <div class="floating-contacts">
+    <a href="https://wa.me/85212345678" class="contact-btn whatsapp-btn" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </a>
+    
+    <a href="weixin://" class="contact-btn wechat-btn" aria-label="Contact us on WeChat">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 01.598.082l1.584.926a.272.272 0 00.14.045c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 01.181-.556c1.529-1.126 2.498-2.922 2.498-4.63 0-3.697-3.51-6.693-7.061-6.693zm-2.694 3.59c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.97-.982zm5.39 0c.535 0 .969.44.969.982a.976.976 0 01-.97.983.976.976 0 01-.968-.983c0-.542.434-.982.969-.982z"/>
+      </svg>
+    </a>
+  </div>
+  
+  <script>
+    // Load books from localStorage and display them
+    document.addEventListener('DOMContentLoaded', function() {
+      loadBooksFromAdmin();
+    });
+    
+    function loadBooksFromAdmin() {
+      const books = JSON.parse(localStorage.getItem('swindon-books')) || [];
+      
+      if (books.length === 0) {
+        console.log('No books found in admin panel yet.');
+        return;
+      }
+      
+      // Load Staff Picks
+      const staffPicks = books.filter(book => book.categories.includes('staff-picks'));
+      if (staffPicks.length > 0) {
+        displayBooksInSection('staff-picks', staffPicks, '.picks-grid');
+      }
+      
+      // Load New Arrivals
+      const newArrivals = books.filter(book => book.categories.includes('new-arrivals'));
+      if (newArrivals.length > 0) {
+        displayBooksInSection('new-arrivals', newArrivals, '.arrivals-grid');
+      }
+    }
+    
+    function displayBooksInSection(category, books, gridSelector) {
+      const grid = document.querySelector(gridSelector);
+      if (!grid) return;
+      
+      // Clear existing placeholder content
+      grid.innerHTML = '';
+      
+      // Add books from admin panel
+      books.forEach(book => {
+        const bookCard = document.createElement('div');
+        bookCard.className = 'book-card';
+        
+        bookCard.innerHTML = `
+          <div class="book-cover" style="background-image: url('${book.cover}'); background-size: cover; background-position: center;">
+          </div>
+          <div class="book-title">${book.title}</div>
+          <div class="book-author">${book.author}</div>
+          <div class="book-price">HK$${book.price}</div>
+          ${category === 'staff-picks' ? `
+            <div class="staff-pick-badge">
+              <div class="staff-avatar">${book.author.charAt(0)}</div>
+              <span class="staff-name">Staff Pick</span>
+            </div>
+          ` : ''}
+        `;
+        
+        grid.appendChild(bookCard);
+      });
+    }
+  </script>
+</body>
+</html>
