@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Swindon Book Co.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #8B1E3F;
+      --accent: #D97548;
+      --forest: #2C5530;
+      --text: #2B2B2B;
+      --text-light: #5A5A5A;
+      --bg-white: #FFFFFF;
+      --bg-cream: #F5F1E8;
+      --bg-dark: #1A1A1A;
+      --border: #E0D5C7;
+      --gold: #C9A961;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      background: var(--bg-cream);
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+    }
+    
+    /* Header */
+    header {
+      background: var(--bg-white);
+      padding: 20px 0;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    nav {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 400;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    
+    /* Hero Section */
+    .about-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--forest) 100%);
+      padding: 120px 40px 80px;
+      text-align: center;
+      color: white;
+    }
+    
+    .about-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    
+    .about-hero .subtitle {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      font-weight: 500;
+    }
+    
+    /* Content Section */
+    .content-section {
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 0 40px;
+    }
+    
+    .content-block {
+      background: var(--bg-white);
+      padding: 48px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 40px;
+    }
+    
+    .content-block h2 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 24px;
+    }
+    
+    .content-block p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: var(--text-light);
+    }
+    
+    .content-block p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(217, 117, 72, 0.1) 0%, rgba(139, 30, 63, 0.1) 100%);
+      border-left: 4px solid var(--accent);
+      padding: 24px 32px;
+      margin: 32px 0;
+      border-radius: 8px;
+    }
+    
+    .highlight-box p {
+      color: var(--text);
+      font-weight: 500;
+      font-size: 1.15rem;
+      margin: 0;
+    }
+    
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+      margin: 32px 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--accent), var(--primary));
+    }
+    
+    .timeline-item {
+      margin-bottom: 32px;
+      position: relative;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -47px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg-white);
+    }
+    
+    .timeline-year {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    
+    .timeline-content {
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+    
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+    }
+    
+    .stat-card {
+      text-align: center;
+      padding: 28px;
+      background: var(--bg-cream);
+      border-radius: 12px;
+    }
+    
+    .stat-number {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    
+    .stat-label {
+      color: var(--text-light);
+      font-weight: 500;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      background: var(--bg-dark);
+      padding: 80px 40px;
+      text-align: center;
+      color: white;
+    }
+    
+    .cta-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .cta-section p {
+      font-size: 1.2rem;
+      margin-bottom: 32px;
+      opacity: 0.9;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+    
+    .btn-secondary:hover {
+      background: white;
+      color: var(--text);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--bg-dark);
+      color: #E8DCC8;
+      padding: 48px 40px 32px;
+    }
+    
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 32px;
+    }
+    
+    .footer-about h3 {
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    
+    .footer-about p {
+      line-height: 1.7;
+      opacity: 0.9;
+    }
+    
+    .footer-col h4 {
+      color: var(--accent);
+      margin-bottom: 16px;
+      font-size: 1.1rem;
+    }
+    
+    .footer-col ul {
+      list-style: none;
+    }
+    
+    .footer-col ul li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-col a {
+      color: #E8DCC8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-col a:hover {
+      color: var(--accent);
+    }
+    
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-top: 32px;
+      border-top: 1px solid rgba(232, 220, 200, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      opacity: 0.7;
+    }
+    
+    .affiliates {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+    
+    .affiliates img {
+      height: 32px;
+      width: auto;
+      opacity: 0.85;
+      transition: opacity 0.3s;
+    }
+    
+    .affiliates img:hover {
+      opacity: 1;
+    }
+    
+    .affiliate-separator {
+      color: #E8DDD0;
+      opacity: 0.5;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .about-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .content-block {
+        padding: 32px 24px;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      
+      .nav-links {
+        gap: 16px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <a href="index.html" class="logo">Swindon Book Co.</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#categories">Browse</a></li>
+        <li><a href="index.html#events">Events</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="about-hero">
+    <h1>Over a Century of Stories</h1>
+    <p class="subtitle">Serving Hong Kong's readers since 1918</p>
+  </section>
+
+  <!-- Content Section -->
+  <div class="content-section">
+    <!-- Our Story -->
+    <div class="content-block">
+      <h2>Our Story</h2>
+      <p>Swindon Book Company was established in 1918, making it one of Hong Kong's oldest and most beloved bookstores. For over a century, we've been at the heart of Hong Kong's literary community, serving generations of readers, students, and book lovers across the city.</p>
+      
+      <div class="highlight-box">
+        <p>"More than a bookstore, we're a cultural landmark and gathering place for Hong Kong's literary community."</p>
+      </div>
+      
+      <p>Our flagship store in Central has been a cornerstone of the community, known for its warm atmosphere, knowledgeable staff, and carefully curated selection. We focus on English-language books spanning all genres, from classic literature to contemporary bestsellers, academic texts to children's favorites.</p>
+    </div>
+
+    <!-- What We Do -->
+    <div class="content-block">
+      <h2>What We Do</h2>
+      <p>Swindon Book Company has been the primary textbook supplier for countless schools and universities throughout Hong Kong for decades. But our mission extends far beyond textbooks.</p>
+      
+      <p>We carry a diverse selection of books and magazines covering lifestyle, art, reference, fiction, and non-fiction. Our collection includes beautiful stationery and cards, making us a one-stop destination for book lovers and gift seekers alike.</p>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">1918</div>
+          <div class="stat-label">Established</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100K+</div>
+          <div class="stat-label">Books in Stock</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">105+</div>
+          <div class="stat-label">Years of Service</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2</div>
+          <div class="stat-label">HK Locations</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Our Heritage -->
+    <div class="content-block">
+      <h2>Our Heritage</h2>
+      <p>Throughout our history, we've maintained a utilitarian, no-frills approach that places books front and center. While we may not have the flashiest decor, our classic charm and stone facade have made us a recognizable landmark in Hong Kong.</p>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1918</div>
+          <div class="timeline-content">Swindon Book Company founded in Hong Kong</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1960s</div>
+          <div class="timeline-content">Opened iconic Lock Road store in Tsim Sha Tsui, serving the community for over 50 years</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2020</div>
+          <div class="timeline-content">Expanded online presence at swindonbooks.com while maintaining our Central flagship and Admiralty Kelly & Walsh locations</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">Today</div>
+          <div class="timeline-content">Continuing to serve Hong Kong's reading community with the same dedication and passion</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Our Promise -->
+    <div class="content-block">
+      <h2>Our Promise</h2>
+      <p>At Swindon Book Company, we believe in personal service. Our friendly, knowledgeable staff are always ready to help you find exactly what you're looking for—or discover something new you didn't know you needed.</p>
+      
+      <p>If we don't have the book you're searching for, we're more than happy to place a special order for you. Your satisfaction and love of reading are at the heart of everything we do.</p>
+      
+      <p>Whether you're a longtime customer or visiting us for the first time, we invite you to experience the warmth and character that have made Swindon Book Company a Hong Kong institution for over a century.</p>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <h2>Visit Us Today</h2>
+    <p>Experience over a century of literary tradition</p>
+    <div class="cta-buttons">
+      <a href="index.html#locations" class="btn btn-primary">Find Our Stores</a>
+      <a href="index.html#categories" class="btn btn-secondary">Browse Collection</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-about">
+        <h3>Swindon Book Co.</h3>
+        <p>A Hong Kong institution since 1918. For over a century, we've been serving readers in Central and Admiralty. More than a bookstore, we're a cultural landmark and gathering place for Hong Kong's literary community.</p>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="index.html">New Arrivals</a></li>
+          <li><a href="index.html">Bestsellers</a></li>
+          <li><a href="index.html">Staff Picks</a></li>
+          <li><a href="index.html">Sale Items</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="index.html#locations">Locations</a></li>
+          <li><a href="index.html#events">Events</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Track Order</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div>&copy; 2026 Swindon Book Co. Est. 1918. All rights reserved.</div>
+      <div class="affiliates">
+        Affiliated with: 
+        <img src="Hong_Kong_Book_Centre.png" alt="Hong Kong Book Centre" />
+        <span class="affiliate-separator">•</span>
+        <img src="Kelly_and_Walsh.png" alt="Kelly & Walsh" />
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
