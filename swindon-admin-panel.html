@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swindon Admin Panel - Add Books</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #8B1E3F;
+      --accent: #D97548;
+      --forest: #2C5530;
+      --text: #2B2B2B;
+      --text-light: #5A5A5A;
+      --bg-white: #FFFFFF;
+      --bg-cream: #F5F1E8;
+      --bg-dark: #1A1A1A;
+      --border: #E0D5C7;
+      --success: #2C5530;
+      --error: #C42C2C;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: linear-gradient(135deg, #F5F1E8 0%, #E8DCC8 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    
+    /* Login Screen */
+    .login-screen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .login-card {
+      background: white;
+      border-radius: 16px;
+      padding: 48px;
+      box-shadow: var(--shadow-lg);
+      max-width: 450px;
+      width: 100%;
+    }
+    
+    .login-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    
+    .login-header h1 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    
+    .login-header p {
+      color: var(--text-light);
+      font-size: 1rem;
+    }
+    
+    .login-info {
+      margin-top: 24px;
+      padding: 16px;
+      background: var(--bg-cream);
+      border-radius: 8px;
+      text-align: center;
+    }
+    
+    .login-info code {
+      background: white;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    
+    .logout-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--error);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      z-index: 1000;
+    }
+    
+    .logout-btn:hover {
+      background: #a02020;
+      transform: translateY(-2px);
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    
+    .header h1 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    
+    .header p {
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+    
+    .admin-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .card h2 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 24px;
+    }
+    
+    .form-group {
+      margin-bottom: 24px;
+    }
+    
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      transition: border-color 0.3s;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    
+    .isbn-input-group {
+      display: flex;
+      gap: 12px;
+    }
+    
+    .isbn-input-group input {
+      flex: 1;
+    }
+    
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .btn-success {
+      background: var(--success);
+      color: white;
+    }
+    
+    .btn-success:hover {
+      background: #234426;
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background: var(--bg-cream);
+      color: var(--text);
+      border: 2px solid var(--border);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--border);
+    }
+    
+    .categories-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    
+    .category-checkbox {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      background: var(--bg-cream);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .category-checkbox:hover {
+      background: var(--border);
+    }
+    
+    .category-checkbox input {
+      margin-right: 8px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+    
+    .category-checkbox label {
+      cursor: pointer;
+      font-weight: 500;
+      margin: 0;
+    }
+    
+    .preview-card {
+      background: var(--bg-cream);
+      padding: 24px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      display: none;
+    }
+    
+    .preview-card.active {
+      display: block;
+    }
+    
+    .preview-content {
+      display: flex;
+      gap: 24px;
+    }
+    
+    .preview-cover {
+      width: 150px;
+      flex-shrink: 0;
+    }
+    
+    .preview-cover img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .preview-details h3 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    
+    .preview-details p {
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+    
+    .preview-details .description {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    .alert {
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      font-weight: 500;
+      display: none;
+    }
+    
+    .alert.active {
+      display: block;
+    }
+    
+    .alert-success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .alert-error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    
+    .alert-info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-light);
+      display: none;
+    }
+    
+    .loading.active {
+      display: block;
+    }
+    
+    .spinner {
+      border: 3px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 12px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .books-list {
+      max-height: 600px;
+      overflow-y: auto;
+    }
+    
+    .book-item {
+      background: var(--bg-cream);
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .book-info {
+      flex: 1;
+    }
+    
+    .book-info h4 {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    
+    .book-info p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+    
+    .btn-delete {
+      background: var(--error);
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+    
+    .btn-delete:hover {
+      background: #a02020;
+    }
+    
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    
+    .stat-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .stat-number {
+      font-size: 2rem;
+      font-family: 'Instrument Serif', serif;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+    
+    .instructions {
+      background: #fff3cd;
+      border: 1px solid #ffeaa7;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+    
+    .instructions h3 {
+      font-size: 1.1rem;
+      color: #856404;
+      margin-bottom: 8px;
+    }
+    
+    .instructions ol {
+      margin-left: 20px;
+      color: #856404;
+    }
+    
+    .instructions li {
+      margin-bottom: 4px;
+    }
+    
+    @media (max-width: 968px) {
+      .admin-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .preview-content {
+        flex-direction: column;
+      }
+      
+      .preview-cover {
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+      }
+      
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Login Screen -->
+  <div id="loginScreen" class="login-screen">
+    <div class="login-card">
+      <div class="login-header">
+        <h1>🔒 Swindon Admin Login</h1>
+        <p>Authorized Employees Only</p>
+      </div>
+      
+      <div id="loginAlert" class="alert"></div>
+      
+      <form onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input 
+            type="text" 
+            id="loginUsername" 
+            placeholder="Enter username"
+            autocomplete="username"
+            required
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input 
+            type="password" 
+            id="loginPassword" 
+            placeholder="Enter password"
+            autocomplete="current-password"
+            required
+          >
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%;">
+          Login to Admin Panel
+        </button>
+      </form>
+      
+      <div class="login-info">
+        <p><strong>Default Credentials:</strong></p>
+        <p>Username: <code>admin</code></p>
+        <p>Password: <code>swindon2026</code></p>
+        <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 12px;">
+          ⚠️ Please change these credentials after first login
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Admin Panel (Hidden until login) -->
+  <div id="adminPanel" style="display: none;">
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>📚 Swindon Admin Panel</h1>
+      <p>Add new books to the website</p>
+    </div>
+    
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number" id="totalBooks">0</div>
+        <div class="stat-label">Total Books</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="todayBooks">0</div>
+        <div class="stat-label">Added Today</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="categoriesCount">6</div>
+        <div class="stat-label">Categories</div>
+      </div>
+    </div>
+    
+    <!-- Main Grid -->
+    <div class="admin-grid">
+      <!-- Left Column: Add Book Form -->
+      <div>
+        <div class="card">
+          <h2>Add New Book</h2>
+          
+          <!-- Instructions -->
+          <div class="instructions">
+            <h3>📖 How to Use:</h3>
+            <ol>
+              <li>Enter the book's ISBN number</li>
+              <li>Click "Fetch Book Info"</li>
+              <li>Review the auto-filled information</li>
+              <li>Select categories and set price</li>
+              <li>Click "Add Book to Website"</li>
+            </ol>
+          </div>
+          
+          <!-- Alerts -->
+          <div id="alert" class="alert"></div>
+          
+          <!-- ISBN Input -->
+          <div class="form-group">
+            <label for="isbn">ISBN Number</label>
+            <div class="isbn-input-group">
+              <input 
+                type="text" 
+                id="isbn" 
+                placeholder="Enter ISBN-10 or ISBN-13"
+                autocomplete="off"
+              >
+              <button class="btn btn-primary" onclick="fetchBookInfo()">
+                Fetch Book Info
+              </button>
+            </div>
+          </div>
+          
+          <!-- Loading Spinner -->
+          <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Fetching book information...</p>
+          </div>
+          
+          <!-- Preview Card -->
+          <div id="previewCard" class="preview-card">
+            <h3 style="margin-bottom: 16px; color: var(--success);">✓ Book Found!</h3>
+            <div class="preview-content">
+              <div class="preview-cover">
+                <img id="previewCover" src="" alt="Book cover">
+              </div>
+              <div class="preview-details">
+                <h3 id="previewTitle"></h3>
+                <p><strong>Author:</strong> <span id="previewAuthor"></span></p>
+                <p class="description" id="previewDescription"></p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Manual Entry Fields -->
+          <div id="manualFields" style="display: none;">
+            <div class="form-group">
+              <label for="title">Book Title *</label>
+              <input type="text" id="title" placeholder="Enter book title" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="author">Author *</label>
+              <input type="text" id="author" placeholder="Enter author name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea id="description" placeholder="Enter book description (optional)"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="coverUrl">Cover Image URL (optional)</label>
+              <input type="text" id="coverUrl" placeholder="https://...">
+            </div>
+          </div>
+          
+          <!-- Categories -->
+          <div class="form-group">
+            <label>Categories * (Select at least one)</label>
+            <div class="categories-grid">
+              <div class="category-checkbox">
+                <input type="checkbox" id="cat-fiction" value="fiction-literature">
+                <label for="cat-fiction">Fiction & Literature</label>
+              </div>
+              <div class="category-checkbox">
+                <input type="checkbox" id="cat-arts" value="arts-culture">
+                <label for="cat-arts">Arts & Culture</label>
+              </div>
+              <div class="category-checkbox">
+                <input type="checkbox" id="cat-china" value="china-hong-kong">
+                <label for="cat-china">China & Hong Kong</label>
+              </div>
+              <div class="category-checkbox">
+                <input type="checkbox" id="cat-children" value="childrens-books">
+                <label for="cat-children">Children's Books</label>
+              </div>
+              <div class="category-checkbox">
+                <input type="checkbox" id="cat-business" value="business-management">
+                <label for="cat-business">Business & Management</label>
+              </div>
+              <div class="category-checkbox">
+                <input type="checkbox" id="cat-academic" value="academic-reference">
+                <label for="cat-academic">Academic & Reference</label>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Price -->
+          <div class="form-group">
+            <label for="price">Price (HK$) *</label>
+            <input type="number" id="price" placeholder="e.g., 150" step="0.01" required>
+          </div>
+          
+          <!-- Submit Buttons -->
+          <div style="display: flex; gap: 12px;">
+            <button class="btn btn-success" onclick="addBook()" style="flex: 1;">
+              Add Book to Website
+            </button>
+            <button class="btn btn-secondary" onclick="resetForm()">
+              Clear Form
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right Column: Books List -->
+      <div>
+        <div class="card">
+          <h2>Books on Website (<span id="bookCount">0</span>)</h2>
+          <div id="booksList" class="books-list">
+            <p style="text-align: center; color: var(--text-light); padding: 40px 20px;">
+              No books added yet. Add your first book using the form on the left!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Logout Button -->
+  <button class="logout-btn" onclick="logout()">🔓 Logout</button>
+  
+  </div><!-- End adminPanel -->
+  
+  <script>
+    // Initialize
+    let currentBookData = null;
+    
+    // Update stats on load
+    function updateStats() {
+      const books = JSON.parse(localStorage.getItem('swindonBooks') || '[]');
+      document.getElementById('totalBooks').textContent = books.length;
+      
+      // Count books added today
+      const today = new Date().toDateString();
+      const todayBooks = books.filter(book => 
+        new Date(book.addedDate).toDateString() === today
+      ).length;
+      document.getElementById('todayBooks').textContent = todayBooks;
+      
+      // Update books list
+      displayBooksList();
+    }
+    
+    // Fetch book info from Google Books API
+    async function fetchBookInfo() {
+      const isbn = document.getElementById('isbn').value.trim();
+      
+      if (!isbn) {
+        showAlert('Please enter an ISBN number', 'error');
+        return;
+      }
+      
+      // Show loading
+      document.getElementById('loading').classList.add('active');
+      document.getElementById('previewCard').classList.remove('active');
+      document.getElementById('alert').classList.remove('active');
+      
+      try {
+        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`);
+        const data = await response.json();
+        
+        // Hide loading
+        document.getElementById('loading').classList.remove('active');
+        
+        if (data.items && data.items.length > 0) {
+          const book = data.items[0].volumeInfo;
+          
+          // Store book data
+          currentBookData = {
+            title: book.title || '',
+            author: book.authors ? book.authors.join(', ') : '',
+            description: book.description || 'No description available',
+            coverUrl: book.imageLinks ? book.imageLinks.thumbnail.replace('http:', 'https:') : '',
+            isbn: isbn
+          };
+          
+          // Display preview
+          document.getElementById('previewTitle').textContent = currentBookData.title;
+          document.getElementById('previewAuthor').textContent = currentBookData.author;
+          document.getElementById('previewDescription').textContent = 
+            currentBookData.description.length > 300 
+              ? currentBookData.description.substring(0, 300) + '...'
+              : currentBookData.description;
+          
+          if (currentBookData.coverUrl) {
+            document.getElementById('previewCover').src = currentBookData.coverUrl;
+          } else {
+            document.getElementById('previewCover').src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="220"><rect fill="%23E0D5C7" width="150" height="220"/><text x="50%" y="50%" text-anchor="middle" fill="%235A5A5A" font-size="14">No Cover</text></svg>';
+          }
+          
+          document.getElementById('previewCard').classList.add('active');
+          showAlert('Book information loaded successfully! Review and add to website.', 'success');
+          
+        } else {
+          showAlert('Book not found. You can enter details manually below.', 'info');
+          document.getElementById('manualFields').style.display = 'block';
+        }
+        
+      } catch (error) {
+        document.getElementById('loading').classList.remove('active');
+        showAlert('Error fetching book info. Please check ISBN and try again.', 'error');
+        console.error('Error:', error);
+      }
+    }
+    
+    // Add book to localStorage
+    function addBook() {
+      // Get form data
+      const categories = Array.from(document.querySelectorAll('.category-checkbox input:checked'))
+        .map(cb => cb.value);
+      const price = document.getElementById('price').value;
+      
+      // Validation
+      if (categories.length === 0) {
+        showAlert('Please select at least one category', 'error');
+        return;
+      }
+      
+      if (!price || price <= 0) {
+        showAlert('Please enter a valid price', 'error');
+        return;
+      }
+      
+      // Get book data (from API or manual entry)
+      let bookData;
+      if (currentBookData) {
+        bookData = currentBookData;
+      } else {
+        // Manual entry
+        const title = document.getElementById('title').value.trim();
+        const author = document.getElementById('author').value.trim();
+        const description = document.getElementById('description').value.trim();
+        const coverUrl = document.getElementById('coverUrl').value.trim();
+        
+        if (!title || !author) {
+          showAlert('Please enter book title and author', 'error');
+          return;
+        }
+        
+        bookData = {
+          title: title,
+          author: author,
+          description: description || 'No description available',
+          coverUrl: coverUrl,
+          isbn: document.getElementById('isbn').value.trim()
+        };
+      }
+      
+      // Create book object
+      const book = {
+        id: Date.now(),
+        ...bookData,
+        categories: categories,
+        price: parseFloat(price),
+        addedDate: new Date().toISOString()
+      };
+      
+      // Save to localStorage
+      const books = JSON.parse(localStorage.getItem('swindonBooks') || '[]');
+      books.push(book);
+      localStorage.setItem('swindonBooks', JSON.stringify(books));
+      
+      // Success!
+      showAlert(`✓ "${book.title}" added successfully!`, 'success');
+      resetForm();
+      updateStats();
+      
+      // Scroll to books list
+      document.getElementById('booksList').scrollTop = 0;
+    }
+    
+    // Display books list
+    function displayBooksList() {
+      const books = JSON.parse(localStorage.getItem('swindonBooks') || '[]');
+      const container = document.getElementById('booksList');
+      document.getElementById('bookCount').textContent = books.length;
+      
+      if (books.length === 0) {
+        container.innerHTML = `
+          <p style="text-align: center; color: var(--text-light); padding: 40px 20px;">
+            No books added yet. Add your first book using the form on the left!
+          </p>
+        `;
+        return;
+      }
+      
+      // Sort by most recent first
+      books.sort((a, b) => new Date(b.addedDate) - new Date(a.addedDate));
+      
+      container.innerHTML = books.map(book => `
+        <div class="book-item">
+          <div class="book-info">
+            <h4>${book.title}</h4>
+            <p>${book.author} • HK$ ${book.price} • ${book.categories.length} categories</p>
+          </div>
+          <button class="btn-delete" onclick="deleteBook(${book.id})">Delete</button>
+        </div>
+      `).join('');
+    }
+    
+    // Delete book
+    function deleteBook(id) {
+      if (!confirm('Are you sure you want to delete this book?')) return;
+      
+      let books = JSON.parse(localStorage.getItem('swindonBooks') || '[]');
+      books = books.filter(book => book.id !== id);
+      localStorage.setItem('swindonBooks', JSON.stringify(books));
+      
+      updateStats();
+      showAlert('Book deleted successfully', 'success');
+    }
+    
+    // Reset form
+    function resetForm() {
+      document.getElementById('isbn').value = '';
+      document.getElementById('title').value = '';
+      document.getElementById('author').value = '';
+      document.getElementById('description').value = '';
+      document.getElementById('coverUrl').value = '';
+      document.getElementById('price').value = '';
+      
+      document.querySelectorAll('.category-checkbox input').forEach(cb => cb.checked = false);
+      
+      document.getElementById('previewCard').classList.remove('active');
+      document.getElementById('manualFields').style.display = 'none';
+      document.getElementById('loading').classList.remove('active');
+      
+      currentBookData = null;
+    }
+    
+    // Show alert
+    function showAlert(message, type) {
+      const alert = document.getElementById('alert');
+      alert.textContent = message;
+      alert.className = `alert alert-${type} active`;
+      
+      setTimeout(() => {
+        alert.classList.remove('active');
+      }, 5000);
+    }
+    
+    // Allow Enter key to fetch book info
+    document.getElementById('isbn').addEventListener('keypress', function(e) {\n      if (e.key === 'Enter') {
+        fetchBookInfo();
+      }
+    });
+    
+    // ==================== LOGIN SYSTEM ====================
+    
+    // Check if already logged in
+    function checkLogin() {
+      const isLoggedIn = sessionStorage.getItem('swindonAdminLoggedIn');
+      if (isLoggedIn === 'true') {
+        showAdminPanel();
+      }
+    }
+    
+    // Handle login form submission
+    function handleLogin(event) {
+      event.preventDefault();
+      
+      const username = document.getElementById('loginUsername').value;
+      const password = document.getElementById('loginPassword').value;
+      
+      // Default credentials (CHANGE THESE!)
+      const validUsername = 'admin';
+      const validPassword = 'swindon2026';
+      
+      if (username === validUsername && password === validPassword) {
+        sessionStorage.setItem('swindonAdminLoggedIn', 'true');
+        showAdminPanel();
+      } else {
+        showLoginAlert('Invalid username or password', 'error');
+      }
+    }
+    
+    // Show admin panel after successful login
+    function showAdminPanel() {
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('adminPanel').style.display = 'block';
+      updateStats();
+    }
+    
+    // Logout function
+    function logout() {
+      if (confirm('Are you sure you want to logout?')) {
+        sessionStorage.removeItem('swindonAdminLoggedIn');
+        document.getElementById('loginScreen').style.display = 'flex';
+        document.getElementById('adminPanel').style.display = 'none';
+        
+        // Clear form
+        document.getElementById('loginUsername').value = '';
+        document.getElementById('loginPassword').value = '';
+      }
+    }
+    
+    // Show login alert
+    function showLoginAlert(message, type) {
+      const alert = document.getElementById('loginAlert');
+      alert.textContent = message;
+      alert.className = `alert alert-${type} active`;
+      
+      setTimeout(() => {
+        alert.classList.remove('active');
+      }, 3000);
+    }
+    
+    // Initialize on page load
+    checkLogin();
+  </script>
+</body>
+</html>
