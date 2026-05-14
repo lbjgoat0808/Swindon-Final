@@ -404,7 +404,16 @@
       margin-bottom: 56px;
     }
     
-    .section-header h2 {
+    .categories .section-header h2 {
+      color: #F5F1E8;
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+    }
+    
+    .categories .section-header p {
+      color: #E8DCC8;
+      font-size: 1.15rem;
+    }
       font-size: 2.8rem;
       font-weight: 700;
       margin-bottom: 16px;
@@ -430,6 +439,9 @@
       transition: all 0.4s ease;
       box-shadow: var(--shadow-sm);
       border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      display: block;
     }
     
     .category-card:hover {
@@ -1213,13 +1225,25 @@
     
     .affiliates {
       display: flex;
-      gap: 28px;
+      gap: 20px;
       align-items: center;
       font-size: 0.85rem;
     }
     
-    .affiliates strong {
+    .affiliates img {
+      height: 32px;
+      width: auto;
+      opacity: 0.85;
+      transition: opacity 0.3s;
+    }
+    
+    .affiliates img:hover {
+      opacity: 1;
+    }
+    
+    .affiliate-separator {
       color: #E8DDD0;
+      opacity: 0.5;
     }
     
     /* Floating Contact Buttons */
@@ -1404,7 +1428,7 @@
       <div class="nav-links">
         <a href="#categories">Browse</a>
         <a href="#events">Events</a>
-        <a href="#about">About</a>
+        <a href="about.html">About</a>
         <a href="#" class="cart-btn">Cart (0)</a>
       </div>
     </nav>
@@ -1483,7 +1507,7 @@
       </div>
       
       <div class="category-grid">
-        <div class="category-card">
+        <a href="fiction-literature.html" class="category-card">
           <div class="category-image">
             <img src="fiction-and-literature-pic.png" alt="Fiction & Literature books">
           </div>
@@ -1491,9 +1515,9 @@
             <h3>Fiction & Literature</h3>
             <p>Classic novels to contemporary bestsellers</p>
           </div>
-        </div>
+        </a>
         
-        <div class="category-card">
+        <a href="arts-culture.html" class="category-card">
           <div class="category-image">
             <img src="arts-and-culture-pic.png" alt="Arts & Culture books">
           </div>
@@ -1501,9 +1525,9 @@
             <h3>Arts & Culture</h3>
             <p>Visual arts, music, film, and photography</p>
           </div>
-        </div>
+        </a>
         
-        <div class="category-card">
+        <a href="china-hong-kong.html" class="category-card">
           <div class="category-image">
             <img src="china-and-hong-kong-pic.png" alt="China & Hong Kong books">
           </div>
@@ -1511,9 +1535,9 @@
             <h3>China & Hong Kong</h3>
             <p>Chinese history, culture, and local heritage</p>
           </div>
-        </div>
+        </a>
         
-        <div class="category-card">
+        <a href="childrens-books.html" class="category-card">
           <div class="category-image">
             <img src="childrens-books-pic.png" alt="Children's Books">
           </div>
@@ -1521,9 +1545,9 @@
             <h3>Children's Books</h3>
             <p>Picture books, classics, and young adult</p>
           </div>
-        </div>
+        </a>
         
-        <div class="category-card">
+        <a href="business-management.html" class="category-card">
           <div class="category-image">
             <img src="business-and-management-pic.png" alt="Business & Management books">
           </div>
@@ -1531,9 +1555,9 @@
             <h3>Business & Management</h3>
             <p>Leadership, strategy, and entrepreneurship</p>
           </div>
-        </div>
+        </a>
         
-        <div class="category-card">
+        <a href="academic-reference.html" class="category-card">
           <div class="category-image">
             <img src="academic-and-reference-pic.png" alt="Academic & Reference books">
           </div>
@@ -1541,7 +1565,7 @@
             <h3>Academic & Reference</h3>
             <p>Textbooks and scholarly resources</p>
           </div>
-        </div>
+        </a>
       </div>
       
       <!-- Can't Find Your Book CTA -->
@@ -1926,7 +1950,10 @@
     <div class="footer-bottom">
       <div>&copy; 2026 Swindon Book Co. Ltd. All rights reserved.</div>
       <div class="affiliates">
-        Affiliated with: <strong>Hong Kong Book Centre</strong> • <strong>Kelly & Walsh</strong>
+        Affiliated with: 
+        <img src="Hong_Kong_Book_Centre.png" alt="Hong Kong Book Centre" />
+        <span class="affiliate-separator">•</span>
+        <img src="Kelly_and_Walsh.png" alt="Kelly & Walsh" />
       </div>
     </div>
   </footer>
